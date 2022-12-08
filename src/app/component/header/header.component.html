@@ -1,0 +1,16 @@
+<div class="container-fluid padding">
+        
+    <!--<div *ngIf="user!=null"><p style="color:rgb(45, 38, 38)"> Bonjour {{user.username}} </p></div>-->
+    
+    <div>
+    <button (click)="connexion()" class="btn btn-outline-dark btn-lg buttonMargin" > Connexion </button>
+    <button *ngIf="a>2" (click)="affichageArticle()" class="btn btn-outline-dark btn-lg buttonMargin" > Voir nos produits</button>
+    <button *ngIf="" (click)="gestionCommmande()" class="btn btn-outline-dark btn-lg buttonMargin" > Vos commandes</button>
+    <button *ngIf="a>2" (click)="gestionUtilisateurs()" class="btn btn-outline-dark btn-lg buttonMargin" > gestion des utilisateurs</button>
+    <button *ngIf="a>2" (click)="logout()" class="btn btn-outline-dark btn-lg buttonMargin" > deconnexion </button>
+</div>
+<div>
+    <button *ngIf="nomroleuser.includes('SuperAdmin') || nomroleuser.includes('Admin') " (click)="gestionArticle()" class="btn btn-outline-dark btn-lg buttonMargin" > Gestion des Articles</button>
+</div>
+</div>
+

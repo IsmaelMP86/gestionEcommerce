@@ -1,0 +1,25 @@
+<div class="container-fluid">  
+    <table class="table table-bordered">
+        <tr>
+            <td>Id</td>
+            <td>Nom</td>
+            <td>Image</td>
+            <td>Prix</td>
+            <td>Quantité disponible</td>
+            <td>Categorie</td>
+            <td>Ajouter au Panier</td>
+            <td>Quantité dans le panier</td>
+            <td>Enlever du panier</td>
+        </tr>
+        <tr *ngFor="let art of articles">
+        <td>{{art.idarticle}}</td>
+        <td>{{art.nomarticle}}</td>
+        <td>{{art.image}}</td>
+        <td>{{art.prix}}</td>
+        <td>{{art.qtedispo}}</td>
+        <td>{{art.categorie}}</td>
+        <td>ajouter panier a definir</td>
+        <td>Quantité panier a definir</td>
+        <td>Enlever panier a definir</td>       
+        </table>
+    </div>

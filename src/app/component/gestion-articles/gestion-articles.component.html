@@ -1,0 +1,41 @@
+<div class="container-fluid">  
+    <table class="table table-bordered">
+        <tr>
+            <td>Id</td>
+            <td>Nom</td>
+            <td>Image</td>
+            <td>Prix</td>
+            <td>Quantité disponible</td>
+            <td>Categorie</td>
+            <td>Ajouter au Panier</td>
+            <td>Quantité dans le panier</td>
+            <td>Enlever du panier</td>
+        </tr>
+        <tr *ngFor="let art of articles">
+        <td>{{art.idarticle}}</td>
+        <td>{{art.nomarticle}}</td>
+        <td>{{art.image}}</td>
+        <td>{{art.prix}}</td>
+        <td>{{art.qtedispo}}</td>
+        <td>{{art.categorie}}</td>
+        <td>ajouter panier a definir</td>
+        <td>Quantité panier a definir</td>
+        <td>Enlever panier a definir</td>       
+        </table>
+    </div>
+
+<div *ngIf="article.idarticle==null"><h2 class="row justify-content-md-center">Ajouter un article</h2></div>
+<div *ngIf="article.idarticle!=null"><h2 class="row justify-content-md-center">Article à Modifier</h2></div>
+
+<div class="container-fluid ">
+    <form (ngSubmit)="ajouterArt()">
+        <div class="form-group">
+        <!--nom: <input class="form-control" type="text" name="nom" [(ngModel)]="citoyen.nomCit"><br>
+        prenom: <input class="form-control" type="text" name="prenom" [(ngModel)]="citoyen.prenomCit"><br>
+        age: <input  class="form-control" type="text" name="age" [(ngModel)]="citoyen.ageCit"><br>
+        <button  class="btn btn-success" type="submit">valider</button>
+        <button class="btn btn-secondary" type="reset" (click)="remiseaZeroCit()">Annuler</button>-->
+    </div>
+    </form>
+
+</div>
