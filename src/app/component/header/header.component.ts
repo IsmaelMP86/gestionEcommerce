@@ -45,7 +45,7 @@ gestionArticle(){
 
 getRolesUsers(){
   this.nomroleuser = this.user.roles.map(role => role.nomrole);
-  console.log("methode get role" + this.nomroleuser[0]);
+  //console.log("methode get role" + this.nomroleuser[0]);
   /*
 this.roleServ.getRoleofUti(this.user.idutilisateur).subscribe(
   response =>{ this.roleusers = response;

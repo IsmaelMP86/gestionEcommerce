@@ -7,9 +7,9 @@
             <td>Prix</td>
             <td>Quantité disponible</td>
             <td>Categorie</td>
-            <td>Ajouter au Panier</td>
-            <td>Quantité dans le panier</td>
-            <td>Enlever du panier</td>
+            <td>Supprimer article</td>
+            <td>Modifier article</td>
+            
         </tr>
         <tr *ngFor="let art of articles">
         <td>{{art.idarticle}}</td>
@@ -19,8 +19,7 @@
         <td>{{art.qtedispo}}</td>
         <td>{{art.categorie}}</td>
         <td>ajouter panier a definir</td>
-        <td>Quantité panier a definir</td>
-        <td>Enlever panier a definir</td>       
+        <td><button class="btn btn-outline-warning  " (click)="afficherrArtById(art.idarticle)">modifier l'Article'</button></td>
         </table>
     </div>
 
@@ -30,11 +29,14 @@
 <div class="container-fluid ">
     <form (ngSubmit)="ajouterArt()">
         <div class="form-group">
-        <!--nom: <input class="form-control" type="text" name="nom" [(ngModel)]="citoyen.nomCit"><br>
-        prenom: <input class="form-control" type="text" name="prenom" [(ngModel)]="citoyen.prenomCit"><br>
-        age: <input  class="form-control" type="text" name="age" [(ngModel)]="citoyen.ageCit"><br>
+        nom article: <input class="form-control" type="text" name="nomarticle" id="nomarticle" [(ngModel)]="article.nomarticle"><br>
+        image : Fichier :<input type="file" name="fileInput" id="fileInput" (change)="selectEvent($event)"><br>
+        Prix : <input  class="form-control" type="text" name="prix" id="prix" [(ngModel)]="article.prix"><br>
+        Quantité disponible : <input  class="form-control" type="text" name="qtedispo" id="qtedispo" [(ngModel)]="article.qtedispo"><br>
+        Categorie : <input  class="form-control" type="text" name="nomcategorie" id="nomcategorie" [(ngModel)]="categorie.nomcategorie"><br>
+        
         <button  class="btn btn-success" type="submit">valider</button>
-        <button class="btn btn-secondary" type="reset" (click)="remiseaZeroCit()">Annuler</button>-->
+        <button class="btn btn-secondary" type="reset" (click)="remiseaZeroArt()">Annuler</button>
     </div>
     </form>
 

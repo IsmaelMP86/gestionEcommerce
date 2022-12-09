@@ -28,6 +28,4 @@ constructor(private articleServe:ArticleService) {}
   }
 
 
-}{
-
 }
