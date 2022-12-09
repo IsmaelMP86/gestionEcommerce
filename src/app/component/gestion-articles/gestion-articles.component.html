@@ -14,12 +14,13 @@
         <tr *ngFor="let art of articles">
         <td>{{art.idarticle}}</td>
         <td>{{art.nomarticle}}</td>
-        <td>{{art.image}}</td>
+        <td *ngIf="art.image!=null"><img src="http://localhost:8030{{art.image}}" ></td>
+        <td *ngIf="art.image==null">pas d image</td>
         <td>{{art.prix}}</td>
         <td>{{art.qtedispo}}</td>
-        <td>{{art.categorie}}</td>
-        <td>ajouter panier a definir</td>
-        <td><button class="btn btn-outline-warning  " (click)="afficherrArtById(art.idarticle)">modifier l'Article'</button></td>
+        <td><!--{{getNomCatbyArtId(art.idarticle)}}--><td>
+        <td><button class="btn btn-outline-danger  " (click)="supprimerById(art.idarticle)">Supprimer l'Article</button></td>
+        <td><button class="btn btn-outline-warning  " (click)="afficherrArtById(art.idarticle)">Modifier l'Article</button></td>
         </table>
     </div>
 
@@ -27,13 +28,14 @@
 <div *ngIf="article.idarticle!=null"><h2 class="row justify-content-md-center">Article à Modifier</h2></div>
 
 <div class="container-fluid ">
-    <form (ngSubmit)="ajouterArt()">
+    <form (ngSubmit)="ajouterArtavceimg()">
         <div class="form-group">
-        nom article: <input class="form-control" type="text" name="nomarticle" id="nomarticle" [(ngModel)]="article.nomarticle"><br>
-        image : Fichier :<input type="file" name="fileInput" id="fileInput" (change)="selectEvent($event)"><br>
-        Prix : <input  class="form-control" type="text" name="prix" id="prix" [(ngModel)]="article.prix"><br>
-        Quantité disponible : <input  class="form-control" type="text" name="qtedispo" id="qtedispo" [(ngModel)]="article.qtedispo"><br>
-        Categorie : <input  class="form-control" type="text" name="nomcategorie" id="nomcategorie" [(ngModel)]="categorie.nomcategorie"><br>
+            <input type="hidden" name="idArt" id="idArt" [(ngModel)]="article.idarticle">
+        nom article: <input class="form-control" type="text" name="nomArt" id="nomArt" [(ngModel)]="nomArt"><br>
+        image : <input type="file" name="image" id="image" (change)="selectEvent($event)"><br>
+        Prix : <input  class="form-control" type="text" name="prix" id="prix" [(ngModel)]="prixart"><br>
+        Quantité disponible : <input  class="form-control" type="text" name="qtdispo" id="qtdispo" [(ngModel)]="qtdispo"><br>
+        Categorie : <input  class="form-control" type="text" name="nomcatego" id="nomcatego" [(ngModel)]="nomcatego"><br>
         
         <button  class="btn btn-success" type="submit">valider</button>
         <button class="btn btn-secondary" type="reset" (click)="remiseaZeroArt()">Annuler</button>

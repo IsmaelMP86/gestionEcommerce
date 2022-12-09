@@ -11,18 +11,25 @@ import { GestionUploadService } from 'src/app/services/gestion-upload.service';
   styleUrls: ['./gestion-articles.component.css']
 })
 export class GestionArticlesComponent implements OnInit {
- 
+  categorie!:Categorie;
   articles!:Article[];
   article!:Article;
-  categorie!:Categorie;
   selectedFile!: File;
+  idArt!:string;
+  nomArt!:string;
+  prixart!:string;
+  qtdispo!:string;
+  nomcatego!:string;
+
  
 constructor(private articleServe:ArticleService, private catServe:CategorieService, private gestioUpload:GestionUploadService) {}
 
   ngOnInit(): void {
     this.categorie = new Categorie();
     this.article = new Article();
+   
     this.afficherArticles();
+    this.idArt="0";
   }
 
   selectEvent(event: any): void {
@@ -33,19 +40,17 @@ constructor(private articleServe:ArticleService, private catServe:CategorieServi
   {
     console.log(this.selectedFile.name);
     console.log(this.selectedFile.size)
-    console.log(this.article.nomarticle)
-    let formData = new FormData();
-    formData.append("image", this.selectedFile);
-    //creer un objet article avec tt ce qui est pas immage et append(article)
-    formData.append("nomarticle", this.nom);
-
-
-
-
+    
+   let formData = new FormData();
+    formData.append("idArt", this.idArt);
+    formData.append("nomArt", this.nomArt);
+    formData.append("prix", this.prixart);
+    formData.append("qtdispo", this.qtdispo);
+    formData.append("nomcatego", this.nomcatego);
+    formData.append("image", this.selectedFile);    
     this.gestioUpload.saveFile(formData).subscribe(res => {
       console.log("ok");
     
-
     },
     
     err=>
@@ -64,14 +69,15 @@ constructor(private articleServe:ArticleService, private catServe:CategorieServi
     )
   }
 
-  ajouterArt()
-  {
-    this.articleServe.addArticle(this.article).subscribe(
-      response=> { 
-        console.log(this.article.nomarticle)
-        this.afficherArticles();
-      }
-    )
+  getNomCatbyArtId(id:number):any{
+   this.articleServe.getCatByArtId(id).subscribe(
+    response =>
+    {
+      let nomcat = response;
+      
+      return nomcat
+    }
+   )
   }
 
   afficherrArtById(idart:number){
@@ -80,9 +86,19 @@ constructor(private articleServe:ArticleService, private catServe:CategorieServi
         this.article = response
         this.catServe.getCategoByArtId(idart).subscribe(
           response2 => {this.categorie = response2 
-          console.log(this.categorie.nomcategorie)}
+          console.log(this.categorie.nomcategorie)}          
         )
+        this.idArt= this.article.idarticle.toString();
+        this.nomArt = this.article.nomarticle;
+        this.prixart = this.article.prix.toString();
+        this.qtdispo = this.article.qtedispo.toString();
       }
+    )
+  }
+//marche pas cart contrainte clef categorie
+  supprimerById(idArt:number){
+    this.articleServe.suprArticle(idArt).subscribe(
+      response => { this.afficherArticles();}
     )
   }
 

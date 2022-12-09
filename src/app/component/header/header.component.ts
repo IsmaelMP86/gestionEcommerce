@@ -43,6 +43,10 @@ gestionArticle(){
   this.router.navigateByUrl('gestionArticles');
   }
 
+gestionCategorie(){
+  this.router.navigateByUrl('gestionCategorie');
+}
+
 getRolesUsers(){
   this.nomroleuser = this.user.roles.map(role => role.nomrole);
   //console.log("methode get role" + this.nomroleuser[0]);

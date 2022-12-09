@@ -1,0 +1,37 @@
+
+<div class="container-fluid">  
+    <table class="table table-bordered">
+        <tr>
+            <td>Id</td>
+            <td>Nom Categorie</td>
+            <td>Articles</td>
+            <td>Modifier</td>
+            <td>Supprimer</td>
+        </tr>
+        <tr *ngFor="let cat of categories">
+        <td>{{cat.idcategorie}}</td>
+        <td>{{cat.nomcategorie}}</td>
+        <td><ul *ngFor="let art of cat.articles"><li>{{art.nomarticle}}</li></ul></td>
+        <td>
+            <div><button class="btn btn-outline-warning  " (click)="getCategoriebyId(cat.idcategorie)">modifier la categorie</button></div>
+        </td>        
+        <td><div><button class="btn btn-outline-danger  " (click)="deleteCatById(cat.idcategorie)">Supprimer la categorie</button></div></td>
+        </tr>
+        
+        
+    </table>
+    </div>
+    <div *ngIf="categorie.idcategorie==null"><h2 class="row justify-content-md-center">Ajouter une Categorie</h2></div>
+    <div *ngIf="categorie.idcategorie!=null"><h2 class="row justify-content-md-center">Categorie à Modifier</h2></div>
+    
+    <div class="container-fluid ">
+        <form (ngSubmit)="ajouteruneCat()">
+            <div class="form-group">
+            nom categorie: <input class="form-control" type="text" name="nom" [(ngModel)]="categorie.idcategorie"><br>
+            articles: <input class="form-control" type="text" name="prenom" [(ngModel)]="categorie.idcategorie"> a modifier<br>
+            <button  class="btn btn-success" type="submit">valider</button>
+            <button class="btn btn-secondary" type="reset" (click)="remiseaZeroCat()">Annuler</button>
+        </div>
+        </form>
+    
+    </div>

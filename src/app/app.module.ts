@@ -16,6 +16,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthChaineInterceptor } from './interceptor/authentification.interceptor';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AffichageArticlesComponent } from './component/affichage-articles/affichage-articles.component';
+import { GestoinCategorieComponent } from './component/gestoin-categorie/gestoin-categorie.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { AffichageArticlesComponent } from './component/affichage-articles/affic
     GestionArticlesComponent,
     GestionPanierComponent,
     AuthentificationComponent,
-    AffichageArticlesComponent
+    AffichageArticlesComponent,
+    GestoinCategorieComponent
   ],
   imports: [
     BrowserModule,

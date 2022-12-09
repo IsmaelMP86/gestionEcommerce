@@ -11,7 +11,7 @@ export class GestionUploadService {
 
   saveFile(data: FormData){
     
-   
-    return this.http.post<any>('http://localhost:8015/uploadFile',data); 
+   console.log(data.getAll);
+    return this.http.post<any>('http://localhost:8030/api/articlestest',data); 
   }
 }

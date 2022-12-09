@@ -14,10 +14,13 @@
         <tr *ngFor="let art of articles">
         <td>{{art.idarticle}}</td>
         <td>{{art.nomarticle}}</td>
-        <td>{{art.image}}</td>
+        <td *ngIf="art.image!=null"><img src="http://localhost:8030{{art.image}}" ></td>
+        <td *ngIf="art.image==null">pas d image</td>
         <td>{{art.prix}}</td>
         <td>{{art.qtedispo}}</td>
         <td>{{art.categorie}}</td>
+
+        
         <td>ajouter panier a definir</td>
         <td>Quantité panier a definir</td>
         <td>Enlever panier a definir</td>       
